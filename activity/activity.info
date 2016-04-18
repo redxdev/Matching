@@ -1,0 +1,6 @@
+[Activity]
+name = Test
+bundle_id = edu.rit.Test
+exec = sugar-activity TestActivity.TestActivity
+icon = activity-generic
+activity_version = 1
