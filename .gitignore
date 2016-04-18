@@ -1,2 +1,5 @@
 # Intellij-based IDEs
 .idea/
+
+# Build
+dist/
