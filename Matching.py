@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import pygame
 from gi.repository import Gtk
+from WordList import WordList
 
 
 class MatchingGame:
@@ -16,6 +17,9 @@ class MatchingGame:
 
         self.paused = False
         self.direction = 1
+
+        self.wordList = WordList()
+        print str(len(self.wordList.getList())) + " words in list"
 
     def set_paused(self, paused):
         self.paused = paused
