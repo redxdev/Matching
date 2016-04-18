@@ -13,17 +13,17 @@ from sugar3.activity.widgets import StopButton
 
 import sugargame.canvas
 
-import Test
+import Matching
 
 
-class TestActivity(sugar3.activity.activity.Activity):
+class MatchingActivity(sugar3.activity.activity.Activity):
     def __init__(self, handle):
-        super(TestActivity, self).__init__(handle)
+        super(MatchingActivity, self).__init__(handle)
 
         self.paused = False
 
         # Create the game instance.
-        self.game = Test.Test()
+        self.game = Matching.MatchingGame()
 
         # Build the activity toolbar.
         self.build_toolbar()
