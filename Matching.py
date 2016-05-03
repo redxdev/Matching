@@ -41,6 +41,9 @@ class MatchingGame:
                         self.direction = -1
                     elif event.key == pygame.K_RIGHT:
                         self.direction = 1
+                elif event.type == pygame.MOUSEBUTTONUP:
+                    x, y = pygame.mouse.get_pos()
+                    self.game.onClick(screen, x, y)
 
             # Clear Display
             screen.fill((255, 255, 255))  # 255 for white

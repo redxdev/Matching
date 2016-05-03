@@ -36,6 +36,8 @@ class WordList:
             cards.append(WordCard(wordPair[0], wordPair[0]))
             cards.append(WordCard(wordPair[0], wordPair[1]))
 
+        random.shuffle(cards)
+
         return cards
 
 
