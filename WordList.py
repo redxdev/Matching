@@ -49,13 +49,13 @@ class WordCard:
     def matches(self, other):
         return self.word == other.word
 
-    def draw(self, screen, position):
+    def draw(self, screen, position, size):
         x, y = position
-        pygame.draw.rect(screen, (128, 128, 128), (x, y, 40, 40), 0)
-        pygame.draw
+        width, height = size
+        pygame.draw.rect(screen, (128, 128, 128), (x, y, width, height), 0)
 
-        myfont = pygame.font.SysFont("monospace", 15)
+        myfont = pygame.font.SysFont("monospace", 30)
 
         # render text
-        label = myfont.render(self.display, 1, (255, 255, 0))
+        label = myfont.render(self.display, 1, (0, 0, 0))
         screen.blit(label, (x, y))
