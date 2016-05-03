@@ -45,9 +45,6 @@ class MatchingGame:
             # Clear Display
             screen.fill((255, 255, 255))  # 255 for white
 
-            # Draw the ball
-            pygame.draw.circle(screen, (255, 0, 0), (500, 500), 100)
-
             self.game.draw(screen)
 
             # Flip Display

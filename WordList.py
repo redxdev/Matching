@@ -34,7 +34,7 @@ class WordList:
             wordPair = availableWords[index]
             del availableWords[index]
             cards.append(WordCard(wordPair[0], wordPair[0]))
-            cards.append(WordCard(wordPair[1], wordPair[0]))
+            cards.append(WordCard(wordPair[0], wordPair[1]))
 
         return cards
 
