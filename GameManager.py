@@ -1,5 +1,5 @@
 from WordList import WordList, WordCard
-
+import pygame
 
 class GameManager:
     def __init__(self):
@@ -10,6 +10,12 @@ class GameManager:
         self.cards = self.wordList.getRandomCards(4)
 
     def draw(self, screen):
-        for card in self.cards:
+        cardW, cardH = screen.get_size()
+        cardW /= 9
+        cardH /= 5
+        for i in range(0, len(self.cards)):
+            card = self.cards[i]
             if card.active:
-                card.draw(screen, (50, 50))
+                x = (i % 4) * (cardW * 2) + cardW
+                y = int(i / 4) * (cardH * 2) + cardH
+                card.draw(screen, (x, y), (cardW, cardH))
