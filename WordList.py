@@ -58,4 +58,5 @@ class WordCard:
 
         # render text
         label = myfont.render(self.display, 1, (0, 0, 0))
-        screen.blit(label, (x, y))
+        textWidth, textHeight = label.get_size()
+        screen.blit(label, (x + (width/2) - (textWidth/2), y + (height/2) - (textHeight/2) ))
