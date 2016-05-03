@@ -40,6 +40,8 @@ class WordCard:
     def __init__(self, word, display):
         self.word = word
         self.display = display
+        self.selected = False
+        self.active = True
 
     def matches(self, other):
         return self.word == other.word
