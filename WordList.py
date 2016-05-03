@@ -1,3 +1,5 @@
+import random;
+
 class WordList:
     def __init__(self):
         self.list = [
@@ -17,3 +19,27 @@ class WordList:
 
     def getList(self):
         return self.list
+
+    def getRandomCards(self, pairCount):
+        if pairCount > len(self.list):
+            raise IndexError("count is > the number of words defined in WordList")
+
+        cards = []
+        availableWords = list(self.list)
+
+        for i in range(0, pairCount):
+            index = random.randrange(0, len(availableWords))
+            wordPair = availableWords[index]
+            del availableWords[index]
+            cards.append(WordCard(wordPair[0], wordPair[0]))
+            cards.append(WordCard(wordPair[1], wordPair[0]))
+
+        return cards
+
+class WordCard:
+    def __init__(self, word, display):
+        self.word = word
+        self.display = display
+
+    def matches(self, other):
+        return self.word == other.word

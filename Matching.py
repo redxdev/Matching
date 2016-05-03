@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import pygame
-from gi.repository import Gtk
 from WordList import WordList
 
 
@@ -39,9 +38,6 @@ class MatchingGame:
         screen = pygame.display.get_surface()
 
         while self.running:
-            # Pump GTK messages.
-            while Gtk.events_pending():
-                Gtk.main_iteration()
 
             # Pump PyGame messages.
             for event in pygame.event.get():
