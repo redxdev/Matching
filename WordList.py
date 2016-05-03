@@ -55,12 +55,11 @@ class WordCard:
         width, height = size
         pygame.draw.rect(screen, (180, 180, 180), (x, y, width, height), 0)
 
-        if self.selected:
-            pygame.draw.rect(screen, (255, 255, 0), (x - 5, y - 5, width + 8, height + 8), 8)
-
         myfont = pygame.font.SysFont("monospace", fontSize)
 
-        drawText(screen, self.display, (0, 0, 0), (x + 5, y + 5, width - 10, height - 10), myfont, True)
+        if self.selected:
+            pygame.draw.rect(screen, (255, 255, 0), (x - 5, y - 5, width + 8, height + 8), 8)
+            drawText(screen, self.display, (0, 0, 0), (x + 5, y + 5, width - 10, height - 10), myfont, True)
 
 
 # draw some text into an area of a surface
