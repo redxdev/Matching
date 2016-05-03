@@ -1,6 +1,7 @@
 from WordList import WordList, WordCard
 import pygame
 
+
 class GameManager:
     def __init__(self):
         self.wordList = WordList()
@@ -32,4 +33,34 @@ class GameManager:
                 break
 
         if found is not None:
-            found.selected = not found.selected
+            self.select(found)
+
+    def select(self, card):
+        if card.selected:
+            card.selected = False
+            return
+
+        other = None
+        for c in self.cards:
+            if c.selected:
+                other = c
+                break
+
+        if other == None:
+            card.selected = True
+            return
+
+        if other.matches(card):
+            other.selected = False
+            card.selected = False
+            card.active = False
+            other.active = False
+        else:
+            other.selected = False
+            card.selected = False
+
+        for c in self.cards:
+            if c.active:
+                return
+
+        self.startGame(4)
