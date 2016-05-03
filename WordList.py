@@ -1,7 +1,6 @@
 import random
 import pygame
 
-
 class WordList:
     def __init__(self):
         self.list = [
@@ -9,7 +8,7 @@ class WordList:
             ['Afford', 'To have enough money to pay for'],
             ['Alert', 'To warn (someone) of a danger, threat, or problem'],
             ['Analyze', 'To examine in detail'],
-            ['Annual', 'Occuring once every year'],
+            ['Annual', 'Occurring once every year'],
             ['Apparent', 'Clearly visible or understood'],
             ['Assist', 'To help someone'],
             ['Attempt', 'To make an effort to complete a task'],
@@ -54,11 +53,53 @@ class WordCard:
     def draw(self, screen, position, size):
         x, y = position
         width, height = size
-        pygame.draw.rect(screen, (128, 128, 128), (x, y, width, height), 0)
+        pygame.draw.rect(screen, (180, 180, 180), (x, y, width, height), 0)
+
+        if self.selected:
+            pygame.draw.rect(screen, (255, 255, 0), (x, y, width, height), 4)
 
         myfont = pygame.font.SysFont("monospace", 30)
 
-        # render text
-        label = myfont.render(self.display, 1, (0, 0, 0))
-        textWidth, textHeight = label.get_size()
-        screen.blit(label, (x + (width/2) - (textWidth/2), y + (height/2) - (textHeight/2) ))
+        drawText(screen, self.display, (0,0,0), (x, y, width, height), myfont, True)
+
+
+# draw some text into an area of a surface
+# automatically wraps words
+# returns any text that didn't get blitted
+def drawText(surface, text, color, rect, font, aa=False, bkg=None):
+    rect = pygame.Rect(rect)
+    y = rect.top
+    lineSpacing = -2
+
+    # get the height of the font
+    fontHeight = font.size("Tg")[1]
+
+    while text:
+        i = 1
+
+        # determine if the row of text will be outside our area
+        if y + fontHeight > rect.bottom:
+            break
+
+        # determine maximum width of line
+        while font.size(text[:i])[0] < rect.width and i < len(text):
+            i += 1
+
+        # if we've wrapped the text, then adjust the wrap to the last word
+        if i < len(text):
+            i = text.rfind(" ", 0, i) + 1
+
+        # render the line and blit it to the surface
+        if bkg:
+            image = font.render(text[:i], 1, color, bkg)
+            image.set_colorkey(bkg)
+        else:
+            image = font.render(text[:i], aa, color)
+
+        surface.blit(image, (rect.left, y))
+        y += fontHeight + lineSpacing
+
+        # remove the text we just blitted
+        text = text[i:]
+
+    return text

@@ -46,7 +46,7 @@ class MatchingGame:
                     self.game.onClick(screen, x, y)
 
             # Clear Display
-            screen.fill((255, 255, 255))  # 255 for white
+            screen.fill((128, 128, 128))  # 255 for white
 
             self.game.draw(screen)
 
