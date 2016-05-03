@@ -1,6 +1,7 @@
 import random
 import pygame
 
+
 class WordList:
     def __init__(self):
         self.list = [
@@ -37,13 +38,13 @@ class WordList:
 
         return cards
 
+
 class WordCard:
     def __init__(self, word, display):
         self.word = word
         self.display = display
         self.selected = False
         self.active = True
-
 
     def matches(self, other):
         return self.word == other.word

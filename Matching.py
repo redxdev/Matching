@@ -42,8 +42,6 @@ class MatchingGame:
                     elif event.key == pygame.K_RIGHT:
                         self.direction = 1
 
-
-
             # Clear Display
             screen.fill((255, 255, 255))  # 255 for white
 
