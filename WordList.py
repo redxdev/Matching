@@ -1,4 +1,5 @@
-import random;
+import random
+import pygame
 
 class WordList:
     def __init__(self):
@@ -43,5 +44,17 @@ class WordCard:
         self.selected = False
         self.active = True
 
+
     def matches(self, other):
         return self.word == other.word
+
+    def draw(self, screen, position):
+        x, y = position
+        pygame.draw.rect(screen, (128, 128, 128), (x, y, 40, 40), 0)
+        pygame.draw
+
+        myfont = pygame.font.SysFont("monospace", 15)
+
+        # render text
+        label = myfont.render(self.display, 1, (255, 255, 0))
+        screen.blit(label, (x, y))
