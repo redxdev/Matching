@@ -148,14 +148,16 @@ class WordList:
             ["Weary", "very tired"]
         ]
         self.pictureList = [
-            ["Test", "test.png"],
-            ["Test", "test.png"],
-            ["Test", "test.png"],
-            ["Test", "test.png"],
-            ["Test", "test.png"],
-            ["Test", "test.png"],
-            ["Test", "test.png"],
-            ["Test", "test.png"]
+            ["Test", "images/test.png"],
+            ["Test", "images/test.png"],
+            ["Test", "images/test.png"],
+            ["Test", "images/test.png"],
+            ["Test", "images/test.png"],
+            ["Test", "images/test.png"],
+            ["Test", "images/test.png"],
+            ["Test", "images/test.png"],
+            ["Test", "images/test.png"],
+            ["Test", "images/test.png"]
         ]
 
     def getRandomCards(self, pairCount):
@@ -176,7 +178,7 @@ class WordList:
             if listIdx == 0:
                 wordPair = [wordPair[0], ("text", wordPair[1])]
             else:
-                wordPair = [wordPair[0], ("image", wordPair[1])]
+                wordPair = [wordPair[0], ("image", pygame.image.load(wordPair[1]))]
             cards.append(WordCard(wordPair[0], ("text", wordPair[0])))
             cards.append(WordCard(wordPair[0], wordPair[1]))
 
@@ -208,8 +210,7 @@ class WordCard:
             if type == "text":
                 drawText(screen, display, (0, 0, 0), (x + 5, y + 5, width - 10, height - 10), myfont, True)
             elif type == "image":
-                # TODO: Draw the image contained in the path "display"
-                drawText(screen, "TODO: Image", (0, 0, 0), (x + 5, y + 5, width - 10, height - 10), myfont, True)
+                screen.blit(display, (x + 5, y + 5, width - 10, height - 10))
 
 
 # draw some text into an area of a surface
