@@ -148,24 +148,73 @@ class WordList:
             ["Weary", "very tired"]
         ]
         self.pictureList = [
-            ["Test", "images/test.png"],
-            ["Test", "images/test.png"],
-            ["Test", "images/test.png"],
-            ["Test", "images/test.png"],
-            ["Test", "images/test.png"],
-            ["Test", "images/test.png"],
-            ["Test", "images/test.png"],
-            ["Test", "images/test.png"],
-            ["Test", "images/test.png"],
-            ["Test", "images/test.png"]
+            ["Acute", "images/Acute.png"],
+            ["Line", "images/Line.png"],
+            ["Obtuse", "images/Obtuse.png"],
+            ["Parallel", "images/Parallel.png"],
+            ["Perpendicular", "images/Perpendicular.png"],
+            ["Point", "images/Point.png"],
+            ["Ray", "images/Ray.png"],
+            ["Right", "images/Right.png"],
+            ["Segment", "images/Segment.png"],
+            ["TriangleAcute", "images/TriangleAcute.png"],
+            ["TriangleObtuse", "images/TriangleObtuse.png"],
+            ["TriangleRight", "images/TriangleRight.png"],
         ]
         self.mathList = [
-            ["Test 2", "Blah"],
-            ["Test 2", "Blah"],
-            ["Test 2", "Blah"],
-            ["Test 2", "Blah"],
-            ["Test 2", "Blah"],
-            ["Test 2", "Blah"]
+            ["Perimeter", "The distance around a figure."],
+            ["Circumference", "The distance around a circle."],
+            ["Acute angle", "An angle that measures less than 90 degrees."],
+            ["Angle", "A figure formed by 2 rays that have the same endpoint."],
+            ["Capacity", "A measure of how much liquid a container can hold."],
+            ["Array", "An arrangement of objects or pictures in equal columns and rows."],
+            ["Concentric circles", "Circles that have the same center but different diameters."],
+            ["Congruent", "Same size, same shape."],
+            ["Consecutive", "Following in order without interruption."],
+            ["Denominator", "The number below the bar in a fraction, which names the total number of equal parts."],
+            ["Diameter", "The distance across the circle going through the middle."],
+            ["Difference", "Answer to a subtraction problem."], ["Dividend", "The number being divided in division."],
+            ["Divisor", "The number that divides the dividend in division."],
+            ["Equivalent fractions", "Different fractions that name the same number."],
+            ["Expanded form", "A number written to show the value of each digit."],
+            ["Factor", "A number times another number."],
+            ["Fraction", "A number that names a part of a whole, a part of a collection, or a part of a region."],
+            ["Hexagon", "A six sided figure."], ["Horizontal", "Side to side."],
+            ["Hundredth", "On of the 100 equal parts of a whole."],
+            ["Intersecting lines", "Lines that meet or cross at a common point."],
+            ["Interval", "The space or distance between two points on a scale or number line."],
+            ["Line", "A straight path that extends infinitely in opposite directions."],
+            ["Line of symmetry", "A line that divides a shape into two equal parts that match when folded on the line."],
+            ["Line segment", "Part of a line defined by two endpoints along the line."],
+            ["Mass", "The amount of matter in an object."],
+            ["Mixed number", "A number containing a whole number part and a fraction part."],
+            ["Numerator", "The top number of the fraction. The numerator names the number of equal parts."],
+            ["Obtuse angle", "An angle that measures more than 90 degrees and less that 180 degrees."],
+            ["Octagon", "An eight sided figure."],
+            ["Parallel", "Lines that stay the same distance apart and never meet."],
+            ["Parallelogram", "A quadrilateral that has two pairs of parallel lines."],
+            ["Pentagon", "A five sided figure."],
+            ["Period", "Each group of three digits in a number separated by a comma."],
+            ["Perpendicular", "Lines that intersect at 90 degrees."],
+            ["Polygon", "A simple closed two-dimensional figure made up of three or more line segments."],
+            ["Product", "Answer to a multiplication problem."],
+            ["Proper fraction", "A fraction where the numerator is less than the denominator."],
+            ["Quadrilateral", "A polygon with four sides and four vertices."],
+            ["Quotient", "Answer to a division problem."],
+            ["Radius", "The distance from the center to the edge of a circle."],
+            ["Ray", "Are parts of a line that extend in one direction from one endpoint to infinity."],
+            ["Reflection", "'Flipping' a figure"], ["Rhombus", "A parallelogram with all four sides the same length."],
+            ["Right angle", "An angle that measures 90 degrees."], ["Rotation", "'Spinning' a figure."],
+            ["Standard form", "The simplest way to show a number using digits."],
+            ["Sum", "Answer to an additional problem."],
+            ["Tenth", "One of the 10 equal parts of a whole or collection."],
+            ["Transformation", "Changing the position of a figure by rotating, reflecting or translating."],
+            ["Translation", "'Sliding' a figure"],
+            ["Trapezoid", "A quadrillateral with exactly on pair of parallel sides."],
+            ["Vertex", "The corner of an angle."], ["Vertices", "More than one vertex."], ["Vertical", "Up and down."],
+            ["Volume", "The number of cubic units that fit inside a three-dimensional figure."],
+            ["Weight", "A measure of how much gravity pulls on an object."],
+            ["Area", "The number of squares to cover the surfact of a figure."], ["Equivalent", "Equal."]
         ]
 
     def getRandomCards(self, pairCount):
@@ -218,7 +267,8 @@ class WordCard:
             if type == "text":
                 drawText(screen, display, (0, 0, 0), (x + 5, y + 5, width - 10, height - 10), myfont, True)
             elif type == "image":
-                screen.blit(display, (x + 5, y + 5, width - 10, height - 10))
+                display = pygame.transform.scale(display, (width, width))
+                screen.blit(display, (x, y + ((height/2) - (width/2)), width, width))
 
 
 # draw some text into an area of a surface
