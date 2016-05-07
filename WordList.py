@@ -159,13 +159,21 @@ class WordList:
             ["Test", "images/test.png"],
             ["Test", "images/test.png"]
         ]
+        self.mathList = [
+            ["Test 2", "Blah"],
+            ["Test 2", "Blah"],
+            ["Test 2", "Blah"],
+            ["Test 2", "Blah"],
+            ["Test 2", "Blah"],
+            ["Test 2", "Blah"]
+        ]
 
     def getRandomCards(self, pairCount):
-        if pairCount > len(self.wordList) + len(self.pictureList):
+        if pairCount > len(self.wordList) + len(self.pictureList) + len(self.mathList):
             raise IndexError("count is > the number of words/pictures defined in WordList")
 
         cards = []
-        availableWords = [list(self.wordList), list(self.pictureList)]
+        availableWords = [list(self.wordList), list(self.mathList),list(self.pictureList)]
 
         for i in range(0, pairCount):
             listIdx = random.randrange(0, len(availableWords))
@@ -175,7 +183,7 @@ class WordList:
             del wlist[index]
             if len(wlist) == 0:
                 del availableWords[listIdx]
-            if listIdx == 0:
+            if listIdx <= 1:
                 wordPair = [wordPair[0], ("text", wordPair[1])]
             else:
                 wordPair = [wordPair[0], ("image", pygame.image.load(wordPair[1]))]
