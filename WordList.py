@@ -3,7 +3,7 @@ import pygame
 
 class WordList:
     def __init__(self):
-        self.list = [
+        self.wordList = [
             ['Annual', 'Occurring once every year'],
             ['Apparent', 'Clearly visible or understood'],
             ['Assist', 'To help someone'],
@@ -147,22 +147,37 @@ class WordList:
             ["Venture", "to go somewhere despite the risk of possible dangers"],
             ["Weary", "very tired"]
         ]
-
-    def getList(self):
-        return self.list
+        self.pictureList = [
+            ["Test", "test.png"],
+            ["Test", "test.png"],
+            ["Test", "test.png"],
+            ["Test", "test.png"],
+            ["Test", "test.png"],
+            ["Test", "test.png"],
+            ["Test", "test.png"],
+            ["Test", "test.png"]
+        ]
 
     def getRandomCards(self, pairCount):
-        if pairCount > len(self.list):
-            raise IndexError("count is > the number of words defined in WordList")
+        if pairCount > len(self.wordList) + len(self.pictureList):
+            raise IndexError("count is > the number of words/pictures defined in WordList")
 
         cards = []
-        availableWords = list(self.list)
+        availableWords = [list(self.wordList), list(self.pictureList)]
 
         for i in range(0, pairCount):
-            index = random.randrange(0, len(availableWords))
-            wordPair = availableWords[index]
-            del availableWords[index]
-            cards.append(WordCard(wordPair[0], wordPair[0]))
+            listIdx = random.randrange(0, len(availableWords))
+            wlist = availableWords[listIdx]
+            index = random.randrange(0, len(wlist))
+            wordPair = wlist[index]
+            del wlist[index]
+            if len(wlist) == 0:
+                del availableWords[listIdx]
+            if listIdx == 0:
+                wordPair = [wordPair[0], ("text", wordPair[1])]
+            else:
+                wordPair = [wordPair[0], ("image", wordPair[1])]
+            cards.append(WordCard(wordPair[0], ("text", wordPair[0])))
             cards.append(WordCard(wordPair[0], wordPair[1]))
 
         random.shuffle(cards)
@@ -189,7 +204,12 @@ class WordCard:
 
         if self.selected:
             pygame.draw.rect(screen, (255, 255, 0), (x - 5, y - 5, width + 8, height + 8), 8)
-            drawText(screen, self.display, (0, 0, 0), (x + 5, y + 5, width - 10, height - 10), myfont, True)
+            type, display = self.display
+            if type == "text":
+                drawText(screen, display, (0, 0, 0), (x + 5, y + 5, width - 10, height - 10), myfont, True)
+            elif type == "image":
+                # TODO: Draw the image contained in the path "display"
+                drawText(screen, "TODO: Image", (0, 0, 0), (x + 5, y + 5, width - 10, height - 10), myfont, True)
 
 
 # draw some text into an area of a surface
