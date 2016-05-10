@@ -1,6 +1,6 @@
 [Activity]
 name = Matching
 bundle_id = com.redxdev.Matching
-exec = sugar-activity TestActivity.TestActivity
+exec = sugar-activity MatchingActivity.MatchingActivity
 icon = activity-generic
 activity_version = 1
