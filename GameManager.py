@@ -43,8 +43,9 @@ class GameManager:
         for i in range(0, len(self.cards)):
             card = self.cards[i]
             if card.active:
-                x, y, cardW, cardH = self.generateCardPosition(screen.get_size(), i)
-                card.draw(screen, (x, y), (cardW, cardH))
+                screenW, screenH = screen.get_size()
+                x, y, cardW, cardH = self.generateCardPosition((screenW, screenH), i)
+                card.draw(screen, (x, y), (cardW, cardH), screenW / 64)
 
     def onClick(self, screen, x, y):
         bad1, bad2 = self.badCards
