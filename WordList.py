@@ -157,9 +157,9 @@ class WordList:
             ["Ray", "images/Ray.png"],
             ["Right", "images/Right.png"],
             ["Segment", "images/Segment.png"],
-            ["TriangleAcute", "images/TriangleAcute.png"],
-            ["TriangleObtuse", "images/TriangleObtuse.png"],
-            ["TriangleRight", "images/TriangleRight.png"],
+            ["Acute Triangle", "images/TriangleAcute.png"],
+            ["Obtuse Triangle", "images/TriangleObtuse.png"],
+            ["Right Triangle", "images/TriangleRight.png"],
         ]
         self.mathList = [
             ["Perimeter", "The distance around a figure."],
